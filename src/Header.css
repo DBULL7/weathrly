@@ -1,27 +1,40 @@
+*{
+  padding:0px;
+  margin:0px;
+}
 
 
 .header-container{
-  border:1px red solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-container img{
+  padding-left: 10px;
+
 }
 
 .header-input{
   border: none;
   width:175px;
   height: 30px;
+  padding-left: 10px;
   background-color: rgba(0,0,0,.5);
 }
 
 .header-button{
-  height:33px;
+  height: 33px;
+  width: 60px;
   background-color: cornflowerblue;
   border: none;
+  font-weight: 100;
+  font-size: 12px;
 }
 .header-button:placeholder-shown {
   color:magenta;
 }
+
 
 
 
