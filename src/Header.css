@@ -1,0 +1,33 @@
+
+
+.header-container{
+  border:1px red solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-input{
+  border: none;
+  width:175px;
+  height: 30px;
+  background-color: rgba(0,0,0,.5);
+}
+
+.header-button{
+  height:33px;
+  background-color: cornflowerblue;
+  border: none;
+}
+.header-button:placeholder-shown {
+  color:magenta;
+}
+
+
+
+
+
+/*header-input-button-container*/
+/*header-container*
+/*header-button
+/*"header-input"*/
