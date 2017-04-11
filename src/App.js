@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Header'
 import Main from './Main'
+import $ from 'jquery'
 
 
 
@@ -19,8 +20,17 @@ class App extends Component {
     }
   }
 
+  apiCall() {
+    $.getJSON(
+      // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
+      `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.currentState}/${this.state.currentCity}.json`
+    ).then(weather => console.log(weather))
+  }
+
+
   sendLocation(){
     this.setState({currentCity:this.state.city,currentState:this.state.State} )
+    this.apiCall()
   }
 
   updateLocation(input){
