@@ -1,15 +1,21 @@
 .current-temp{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;;
   align-items: center;
   font-weight: 100;
 }
 
+.current-location-container{
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-size: 29px;
+}
+
+
 h2,h3 {
   font-size: 40px;
   font-weight: 300;
-  text-shadow:3px 5px 3px white;
-
+  text-shadow: 2px 1px 1px white
 }
 
 .card{
