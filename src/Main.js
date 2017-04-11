@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import CurrentTemp from './CurrentTemp'
 import List from './List'
-
+import "./Main.css"
 
 class Main extends Component {
   render() {
     return (
-      <div className="bullshit">
-        <CurrentTemp/>
+
+      <div className="main-content">
+      <CurrentTemp/>
+      <main className="list-container">
         <List/>
-        <List/>        
+        <List/>
+      </main>
       </div>
     )
   }

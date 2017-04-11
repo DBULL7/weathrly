@@ -1,0 +1,28 @@
+.current-temp{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+}
+
+h2,h3 {
+  font-size: 40px;
+  font-weight: 300;
+  text-shadow:3px 5px 3px white;
+
+}
+
+.card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border:red 1px solid;
+    width: 85vw;
+    height: 100px;
+}
+
+@media (min-width:655px){
+  .card{
+    width:300px;
+  }
+}
