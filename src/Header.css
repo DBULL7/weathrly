@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 10px;
 }
 
 .header-container img{
@@ -21,6 +22,7 @@
   height: 30px;
   padding-left: 10px;
   background-color: rgba(0,0,0,.5);
+  color: white;
 }
 
 .header-button{
