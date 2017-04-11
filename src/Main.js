@@ -8,7 +8,7 @@ class Main extends Component {
     return (
 
       <div className="main-content">
-      <CurrentTemp/>
+      <CurrentTemp temp={this.props.temp} city={this.props.city}  state={this.props.state}/>
       <main className="list-container">
         <List title="Hourly"/>
         <List title="10 Day Forecast"/>
