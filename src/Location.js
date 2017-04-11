@@ -4,8 +4,9 @@ class Location extends Component{
   render(){
     return(
       <div className="current-location-container">
-      <div className ="city">Denver,</div>
-      <div className ="State">Colorado</div>
+
+      <div className ="city">{this.props.city},</div>
+      <div className ="State">{this.props.state}</div>
       </div>
     )
   }

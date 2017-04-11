@@ -6,6 +6,16 @@ import "./Header.css"
 
 class Header extends Component{
 
+constructor(){
+super()
+
+this.state ={
+  currentInput:"",
+  sentInput:""
+}
+
+}
+
 
 
   render(){
@@ -16,8 +26,8 @@ class Header extends Component{
       <div className="header-container">
         <img src={Icon} alt="logo of a weather "/>
         <div className="header-input-button-container">
-          <Input/>
-          <Button/>
+          <Input updateLocation={this.props.updateLocation}/>
+          <Button sendLocation={this.props.sendLocation}/>
         </div>
       </div>
     )

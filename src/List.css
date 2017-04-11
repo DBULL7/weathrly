@@ -1,8 +1,16 @@
 .current-temp{
   display: flex;
-  justify-content: space-around;;
+  justify-content: center;
   align-items: center;
   font-weight: 100;
+}
+
+.list{
+  padding-top: 25px;
+}
+
+.current-temp-content{
+  padding-left: 15px;
 }
 
 .current-location-container{
