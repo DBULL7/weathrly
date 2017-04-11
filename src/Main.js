@@ -10,8 +10,8 @@ class Main extends Component {
       <div className="main-content">
       <CurrentTemp/>
       <main className="list-container">
-        <List/>
-        <List/>
+        <List title="Hourly"/>
+        <List title="10 Day Forecast"/>
       </main>
       </div>
     )
