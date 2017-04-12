@@ -28,13 +28,8 @@ class App extends Component {
   }
 
   sendLocation(){
-    this.setState({ currentCity:this.state.city, currentState:this.state.State })
-    if (this.state.currentWeather.hourly_forecast == undefined) {
-      console.log('BOOM');
-      this.apiCall()
-    }
     this.apiCall()
-    this.handleCurrentWeather()
+    // this.handleCurrentWeather()
   }
 
 apiEdit(input){
@@ -50,7 +45,7 @@ apiEdit(input){
     } else {
       $.getJSON(
         // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
-        `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.currentState}/${this.state.currentCity}.json`
+        `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
       ).then(weather => this.apiEdit(weather) )
 
 
