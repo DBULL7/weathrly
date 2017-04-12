@@ -14,18 +14,32 @@ class App extends Component {
     this.state={
       currentCity:"Seattle",
       currentState:"Washington",
-      currentTemp:59,
+      currentTemp: 66,
       city: "",
-      State:""
+      State:"",
+      currentWeather:{}
     }
   }
 
 
+  handleCurrentWeather(){
+    var abe = this.state.currentWeather.hourly_forecast[0].feelslike.english
+    console.log(abe)
+    this.setState({currentTemp:abe})
+  }
 
   sendLocation(){
     this.setState({ currentCity:this.state.city, currentState:this.state.State })
+
     this.apiCall()
+    this.handleCurrentWeather()
   }
+
+apiEdit(input){
+     Object.keys(input.hourly_forecast).forEach((val)=>{
+     this.setState({currentWeather:input})
+    })
+}
 
 
   apiCall() {
@@ -35,7 +49,9 @@ class App extends Component {
       $.getJSON(
         // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
         `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.currentState}/${this.state.currentCity}.json`
-      ).then(weather => console.log(weather))
+      ).then(weather => this.apiEdit(weather) )
+
+
     }
   }
 
