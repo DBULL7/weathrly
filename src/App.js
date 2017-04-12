@@ -12,9 +12,9 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      currentCity:"Seattle",
-      currentState:"Washington",
-      currentTemp: 66,
+      currentCity: 'Denver',
+      currentState: 'Colorado',
+      currentTemp: 70,
       city: "",
       State:"",
       currentWeather:{}
@@ -23,14 +23,16 @@ class App extends Component {
 
 
   handleCurrentWeather(){
-    var abe = this.state.currentWeather.hourly_forecast[0].feelslike.english
-    console.log(abe)
-    this.setState({currentTemp:abe})
+    let tempFeelsLike = this.state.currentWeather.hourly_forecast[0].feelslike.english
+    this.setState({currentTemp: tempFeelsLike})
   }
 
   sendLocation(){
     this.setState({ currentCity:this.state.city, currentState:this.state.State })
-
+    if (this.state.currentWeather.hourly_forecast == undefined) {
+      console.log('BOOM');
+      this.apiCall()
+    }
     this.apiCall()
     this.handleCurrentWeather()
   }
@@ -43,8 +45,8 @@ apiEdit(input){
 
 
   apiCall() {
-    if (this.state.currentState == "") {
-      return console.log(typeof this.state.currentState)
+    if (this.state.currentState == null) {
+      return console.log("Not a valid State")
     } else {
       $.getJSON(
         // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
@@ -62,12 +64,19 @@ apiEdit(input){
     this.setState({city:city, State:state})
   }
 
+  test() {
+    if (this.state.city != "") {
+      return (
+        <Main temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
+      )
+    }
+  }
 
   render() {
     return (
       <article>
         <Header sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
-        <Main temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
+        {this.test()}
       </article>
     )
   }
