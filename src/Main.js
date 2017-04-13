@@ -10,8 +10,8 @@ class Main extends Component {
       <div className="main-content">
       <CurrentTemp temp={this.props.temp} city={this.props.city}  state={this.props.state}/>
       <main className="list-container">
-        <List title="Hourly"/>
-        <List title="10 Day Forecast"/>
+        <List listItems={this.props.hourly} title="Hourly"/>
+        <List listItems={this.props.daily} title="10 Day Forecast"/>
       </main>
       </div>
     )

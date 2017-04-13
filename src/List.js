@@ -4,20 +4,19 @@ import ListTitle from './ListTitle'
 import "./List.css"
 
 class List extends Component {
+
+
   render() {
     return (
       <section className="list">
         <ListTitle text={this.props.title}/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        {
+
+      this.props.listItems.map(function(value,index){
+        return <Card  info={value}/>
+      })
+
+      }
       </section>
     )
   }
