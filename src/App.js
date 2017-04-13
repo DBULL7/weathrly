@@ -44,7 +44,6 @@ class App extends Component {
     let longitude = position.coords.longitude
     console.log(latitude)
     console.log(longitude)
-    console.log(this);
     $.getJSON(
       `http://api.wunderground.com/api/3d896652346518f2/geolookup/q/${latitude},${longitude}.json`
 
@@ -54,9 +53,10 @@ class App extends Component {
         `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${zip}.json`
       ).then(locationWeather => {
         console.log(locationWeather);
-        this.setState({city: 'Your City'})
+        this.setState({city: 'Your Location'})
         this.apiEdit(locationWeather)
-        // this.setState({currentWeather: locationWeather})
+      }).catch(() => {
+        alert(`We can't find your location`)
       })
     })
   }
@@ -109,7 +109,9 @@ tempArr[10]="!"
     $.get(
       // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
       `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
-    ).then(weather => this.apiEdit(weather) )
+    ).then(weather => this.apiEdit(weather)).catch(() => {
+      alert('Sorry Something Went Wrong ☹️, please enter a city, zipcode, or state')
+    })
   }
 
 
@@ -139,5 +141,6 @@ tempArr[10]="!"
     )
   }
 }
+
 
 export default App;
