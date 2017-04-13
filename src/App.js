@@ -21,6 +21,19 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    let city  = localStorage.getItem('city')
+    let State = localStorage.getItem('State')
+    this.setState({city: city ? city : '', State: State ? State : ''}, () => {
+      if( this.state.State == "") {
+        console.log("damnit");
+      } else {
+        $.getJSON(
+          `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
+        ).then(weather => this.apiEdit(weather))
+      }
+    })
+  }
 
   handleCurrentWeather(){
     let tempFeelsLike = this.state.currentWeather.hourly_forecast[0].feelslike.english
@@ -40,16 +53,13 @@ apiEdit(input){
 
 
   apiCall() {
-    if (this.state.currentState == null) {
-      return console.log("Not a valid State")
-    } else {
-      $.getJSON(
-        // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
-        `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
-      ).then(weather => this.apiEdit(weather) )
+    localStorage.setItem('city', this.state.city)
+    localStorage.setItem('State', this.state.State)
 
-
-    }
+    $.getJSON(
+      // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
+      `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
+    ).then(weather => this.apiEdit(weather) )
   }
 
   updateLocation(input){
