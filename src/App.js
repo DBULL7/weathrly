@@ -30,7 +30,7 @@ class App extends Component {
       } else {
         $.getJSON(
           `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
-        ).then(weather => console.log(weather))
+        ).then(weather => this.apiEdit(weather))
       }
     })
   }
