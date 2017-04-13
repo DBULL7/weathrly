@@ -1,10 +1,31 @@
 import React, {Component} from 'react'
 
 class Card extends Component {
+
+
+  renderHourly(){
+    
+
+
+  }
+
+
+  renderDaily(){
+
+
+
+  }
+
+
+
+
   render() {
 
     // if(this.props.type)
     return (
+
+
+
 
 
       <article className="card">
