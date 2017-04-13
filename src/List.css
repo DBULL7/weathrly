@@ -52,9 +52,13 @@ h2,h3 {
     width: 85vw;
     height: 100px;
     color: gold;
-    text-shadow: black -2px 3px 3px;
+    border-color:1px #fff solid;
+    text-shadow: black 0px 3px 3px;
     border-radius: 40px;
     margin-bottom: 15px;
+    font-family:monospace;
+    font-size:23px;
+    padding: 0px 5px;
 }
 
 @media (min-width:655px){
