@@ -17,7 +17,10 @@ class App extends Component {
       currentTemp: 70,
       city: "",
       State:"",
-      currentWeather:{}
+      currentWeather:{},
+      hourlyList:[],
+      dailyList:[]
+
     }
   }
 
@@ -58,14 +61,45 @@ class App extends Component {
     this.apiCall()
   }
 
-apiEdit(input){
-     Object.keys(input.hourly_forecast).forEach((val)=>{
-     this.setState({currentWeather:input})
+  dailyUpdate(input){
+    let tempArr = []
+
+    input.forEach((value,index)=>{
+      console.log("!!")
+
+      if(index%24===0){
+        tempArr.push(input [index])
+    }
     })
-    this.setState({currentCity:this.state.city, currentState:this.state.State})
-    let tempFeelsLike = this.state.currentWeather.hourly_forecast[0].feelslike.english
-    this.setState({currentTemp: tempFeelsLike})
-}
+  this.setState({dailyList:tempArr})
+  }
+
+
+
+
+  hourlyUpdate(input){
+    let tempArr = []
+
+    input.forEach((value,index)=>{
+      if(index<10){
+        tempArr.push(input[index])
+    }
+    })
+  this.setState({hourlyList:tempArr})
+  }
+
+
+  apiEdit(input){
+       Object.keys(input.hourly_forecast).forEach((val)=>{
+       this.setState({currentWeather:input})
+      })
+
+      this.setState({currentCity:this.state.city, currentState:this.state.State})
+      let tempFeelsLike = this.state.currentWeather.hourly_forecast[0].feelslike.english
+      this.setState({currentTemp: tempFeelsLike})
+      this.hourlyUpdate(this.state.currentWeather.hourly_forecast)
+      this.dailyUpdate(this.state.currentWeather.hourly_forecast)
+  }
 
 
   apiCall() {
@@ -89,7 +123,9 @@ apiEdit(input){
   test() {
     if (this.state.city != "") {
       return (
-        <Main temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
+        <Main hourly={this.state.hourlyList}
+          daily={this.state.dailyList}
+         temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
       )
     }
   }
