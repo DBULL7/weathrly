@@ -68,8 +68,9 @@ class App extends Component {
   dailyUpdate(input){
     let tempArr = []
     input.forEach((value,index)=>{
-
+      
       if(index%24===0){
+
         tempArr.push(input[index])
     }
     })
