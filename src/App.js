@@ -26,7 +26,8 @@ class App extends Component {
     let State = localStorage.getItem('State')
     this.setState({city: city ? city : '', State: State ? State : ''}, () => {
       if( this.state.State == "") {
-        console.log("damnit");
+        //get user's location automatically
+        navigator.geolocation.getCurrentPosition(this.findLocation)
       } else {
         $.getJSON(
           `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
@@ -35,9 +36,26 @@ class App extends Component {
     })
   }
 
+  findLocation(position) {
+    let latitude = position.coords.latitude
+    let longitude = position.coords.longitude
+    console.log(latitude)
+    console.log(longitude)
+    $.getJSON(
+      `http://api.wunderground.com/api/3d896652346518f2/geolookup/q/${latitude},${longitude}.json`
+
+    ).then(weather => {
+      let zip = weather.location.zip
+      $.getJSON(
+        `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${zip}.json`
+      ).then(locationWeather => {
+        console.log(locationWeather)
+      })
+    })
+  }
+
   sendLocation(){
     this.apiCall()
-    this.handleCurrentWeather()
   }
 
 apiEdit(input){
@@ -53,13 +71,13 @@ apiEdit(input){
   apiCall() {
     localStorage.setItem('city', this.state.city)
     localStorage.setItem('State', this.state.State)
-    
+
     $.get(
       // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
       `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
     ).then(weather => this.apiEdit(weather) )
   }
-  
+
 
   updateLocation(input){
     var location = input.split(',')
