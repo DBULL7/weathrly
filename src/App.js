@@ -29,7 +29,7 @@ class App extends Component {
     let State = localStorage.getItem('State')
     this.setState({city: city ? city : '', State: State ? State : ''}, () => {
       if( this.state.State == "") {
-        //get user's location automatically
+        console.log("!!")
         navigator.geolocation.getCurrentPosition(this.findLocation)
       } else {
         $.getJSON(
