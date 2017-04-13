@@ -30,7 +30,7 @@ class App extends Component {
     this.setState({city: city ? city : '', State: State ? State : ''}, () => {
       if( this.state.State == "") {
         console.log("!!")
-        navigator.geolocation.getCurrentPosition(this.findLocation)
+        navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
       } else {
         $.getJSON(
           `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
@@ -44,6 +44,7 @@ class App extends Component {
     let longitude = position.coords.longitude
     console.log(latitude)
     console.log(longitude)
+    console.log(this);
     $.getJSON(
       `http://api.wunderground.com/api/3d896652346518f2/geolookup/q/${latitude},${longitude}.json`
 
@@ -52,6 +53,10 @@ class App extends Component {
       $.getJSON(
         `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${zip}.json`
       ).then(locationWeather => {
+        console.log(locationWeather);
+        this.setState({city: 'Your City'})
+        this.apiEdit(locationWeather)
+        // this.setState({currentWeather: locationWeather})
       })
     })
   }
