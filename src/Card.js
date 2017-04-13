@@ -4,7 +4,7 @@ class Card extends Component {
 
 
   renderHourly(){
-    
+
 
 
   }

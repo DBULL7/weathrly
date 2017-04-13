@@ -11,9 +11,23 @@ class List extends Component {
         <ListTitle text={this.props.title}/>
         {
 
-      this.props.listItems.map(function(value,index){
-        return <Card key={index}
-         info={value}/>
+      this.props.listItems.map(function(value,index,array){
+        if(index===10){
+          return
+        }
+
+        if(array.length===11){
+             return <Card
+              type ="daily"
+              key={index}
+              info={value} />
+
+        }
+
+        return <Card
+          type="hour"
+          key={index}
+          info={value} />
       })
 
       }

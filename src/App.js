@@ -52,7 +52,6 @@ class App extends Component {
       $.getJSON(
         `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${zip}.json`
       ).then(locationWeather => {
-        console.log(locationWeather)
       })
     })
   }
@@ -63,19 +62,15 @@ class App extends Component {
 
   dailyUpdate(input){
     let tempArr = []
-
     input.forEach((value,index)=>{
-      console.log("!!")
 
       if(index%24===0){
-        tempArr.push(input [index])
+        tempArr.push(input[index])
     }
     })
+tempArr[10]="!"
   this.setState({dailyList:tempArr})
   }
-
-
-
 
   hourlyUpdate(input){
     let tempArr = []
@@ -125,7 +120,7 @@ class App extends Component {
       return (
         <Main hourly={this.state.hourlyList}
           daily={this.state.dailyList}
-         temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
+          temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
       )
     }
   }
