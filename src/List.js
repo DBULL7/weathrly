@@ -12,7 +12,7 @@ class List extends Component {
         {
 
       this.props.listItems.map(function(value,index){
-        return <Card
+        return <Card key={index}
          info={value}/>
       })
 
