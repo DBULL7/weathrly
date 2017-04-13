@@ -7,8 +7,8 @@ class CurrentTemp extends Component {
       <div className="current-temp">
         <Location state={this.props.state} city={this.props.city}/>
         <div className="current-temp-content">
-        <h2>Today:</h2>
-        <h3>{this.props.temp}</h3>
+        <h2> temp:</h2>
+        <h2>{this.props.temp} deg</h2>
         </div>
       </div>
 
