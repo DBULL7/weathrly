@@ -5,7 +5,6 @@ import "./List.css"
 
 class List extends Component {
 
-
   render() {
     return (
       <section className="list">
@@ -13,7 +12,8 @@ class List extends Component {
         {
 
       this.props.listItems.map(function(value,index){
-        return <Card  info={value}/>
+        return <Card
+         info={value}/>
       })
 
       }
