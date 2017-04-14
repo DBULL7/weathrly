@@ -68,7 +68,7 @@ class App extends Component {
   dailyUpdate(input){
     let tempArr = []
     input.forEach((value,index)=>{
-      
+
       if(index%24===0){
 
         tempArr.push(input[index])
@@ -133,10 +133,16 @@ tempArr[10]="!"
     }
   }
 
+  handleKeyPress(event) {
+    if(event.key == 'Enter' && this.state.city !== '') {
+      this.apiCall()
+    }
+  }
+
   render() {
     return (
       <article>
-        <Header sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
+        <Header handleKeyPress={this.handleKeyPress.bind(this)} sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
         {this.test()}
       </article>
     )

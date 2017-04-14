@@ -4,7 +4,7 @@ class Input extends Component{
 
   render(){
     return(
-      <input onChange={(event)=>{this.props.updateLocation(event.target.value)}}
+      <input onKeyPress={(event)=>{this.props.handleKeyPress(event)}}  onChange={(event)=>{this.props.updateLocation(event.target.value)}}
        className="header-input"
        placeholder="Enter City/State"/>
     )

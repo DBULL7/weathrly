@@ -10,8 +10,7 @@ class List extends Component {
       <section className="list">
         <ListTitle text={this.props.title}/>
         {
-
-      this.props.listItems.map(function(value,index,array){
+        this.props.listItems.map(function(value,index,array){
         if(index===10){
           return
         }
@@ -20,14 +19,15 @@ class List extends Component {
              return <Card
               type ="daily"
               key={index}
-              info={value} />
-
+              info={value}
+            />
         }
 
         return <Card
           type="hour"
           key={index}
-          info={value} />
+          info={value}
+         />
       })
 
       }
