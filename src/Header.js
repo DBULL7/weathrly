@@ -17,17 +17,13 @@ constructor(){
 }
 
 
-
 render(){
-
-
-
   return (
     <div className="header-container">
       <img className="header-logo" src={Icon} alt="logo of a weather "/>
       <div className="header-input-button-container">
-        <Input updateLocation={this.props.updateLocation}/>
-        <Button sendLocation={this.props.sendLocation}/>
+        <Input handleKeyPress={this.props.handleKeyPress} updateLocation={this.props.updateLocation}/>
+        <Button endLocation={this.props.sendLocation}/>
       </div>
     </div>
   )
