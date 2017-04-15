@@ -69,9 +69,11 @@ class App extends Component {
     let tempArr = []
     input.forEach((value,index)=>{
 
-      if(index%24===0){
+        if(index%24===0){
 
+        input[index].hasOwnProperty("god")? null :input[index].god=input
         tempArr.push(input[index])
+
     }
     })
 tempArr[10]="!"
@@ -141,15 +143,6 @@ tempArr[10]="!"
     this.setState({city:city, State:state})
   }
 
-  test() {
-    if (this.state.city != "") {
-      return (
-        <Main hourly={this.state.hourlyList}
-          daily={this.state.dailyList}
-          temp={this.state.currentTemp} city={this.state.currentCity} state={this.state.currentState}/>
-      )
-    }
-  }
 
   handleKeyPress(event) {
     if(event.key == 'Enter' && this.state.city !== '') {
@@ -161,7 +154,13 @@ tempArr[10]="!"
     return (
       <article>
         <Header handleKeyPress={this.handleKeyPress.bind(this)} sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
-        {this.test()}
+        <Main hourly={this.state.hourlyList}
+          daily={this.state.dailyList}
+          temp={this.state.currentTemp}
+          city={this.state.currentCity}
+          state={this.state.currentState}
+          weather={this.state.currentWeather}
+        />
       </article>
     )
   }
