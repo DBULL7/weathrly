@@ -5,6 +5,11 @@ import "./List.css"
 
 class List extends Component {
 
+
+  test() {
+    console.log(this.props.weather)
+  }
+
   render() {
     return (
       <section className="list">
@@ -31,6 +36,7 @@ class List extends Component {
       })
 
       }
+      {this.test()}
       </section>
     )
   }
