@@ -43,11 +43,10 @@ h2,h3 {
 
 
 
-.card{
+.card , .cardDrop{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgba(138,200,200,0.5);
     border-radius: 60px;
     width: 85vw;
     height: 100px;
@@ -59,6 +58,15 @@ h2,h3 {
     font-family:monospace;
     font-size:23px;
     padding: 0px 5px;
+}
+
+.card{
+background-color: rgba(138,200,200,0.5);
+}
+
+.cardDrop{
+  background-color: rgba(10,300,50,0.5);
+
 }
 
 @media (min-width:655px){
