@@ -14,13 +14,14 @@ class App extends Component {
     this.state={
       currentCity: 'Denver',
       currentState: 'Colorado',
-      currentTemp: 70,
+      currentTemp: '',
       city: "",
       State:"",
       currentWeather:{},
       hourlyList:[],
-      dailyList:[]
-
+      dailyList:[],
+      icon: "",
+      feelslike: ''
     }
   }
 
@@ -98,10 +99,14 @@ tempArr[10]="!"
       })
 
       this.setState({currentCity:this.state.city, currentState:this.state.State})
-      let tempFeelsLike = this.state.currentWeather.hourly_forecast[0].feelslike.english
+      let tempFeelsLike = this.state.currentWeather.hourly_forecast[0].temp.english
       this.setState({currentTemp: tempFeelsLike})
       this.hourlyUpdate(this.state.currentWeather.hourly_forecast)
       this.dailyUpdate(this.state.currentWeather.hourly_forecast)
+      let icon = this.state.currentWeather.hourly_forecast[0].icon_url
+      this.setState({icon: icon})
+      let feelslike = this.state.currentWeather.hourly_forecast[0].feelslike.english
+      this.setState({feelslike: feelslike})
   }
 
 
@@ -160,6 +165,8 @@ tempArr[10]="!"
           city={this.state.currentCity}
           state={this.state.currentState}
           weather={this.state.currentWeather}
+          icon={this.state.icon}
+          feelslike={this.state.feelslike}
         />
       </article>
     )

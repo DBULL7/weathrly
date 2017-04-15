@@ -6,15 +6,9 @@ import "./List.css"
 class List extends Component {
 
 
-  test() {
-
-    return <div data= {this.props.weather}>asdfasdf</div>
-  }
-
   render() {
     return (
       <section className="list">
-      {this.test()}
         <ListTitle text={this.props.title}/>
         {
         this.props.listItems.map(function(value,index,array){
@@ -33,6 +27,7 @@ class List extends Component {
         }
 
         return <Card
+          
           index={index}
           type="hour"
           key={index}
