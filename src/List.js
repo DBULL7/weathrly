@@ -7,12 +7,14 @@ class List extends Component {
 
 
   test() {
-    console.log(this.props.weather)
+
+    return <div data= {this.props.weather}>asdfasdf</div>
   }
 
   render() {
     return (
       <section className="list">
+      {this.test()}
         <ListTitle text={this.props.title}/>
         {
         this.props.listItems.map(function(value,index,array){
@@ -21,11 +23,12 @@ class List extends Component {
         }
 
         if(array.length===11){
-             return <Card
+             return (
+             <Card
               type ="daily"
               key={index}
               info={value}
-            />
+            />)
         }
 
         return <Card
@@ -36,7 +39,6 @@ class List extends Component {
       })
 
       }
-      {this.test()}
       </section>
     )
   }
