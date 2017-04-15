@@ -5,38 +5,55 @@ class Card extends Component {
   constructor() {
     super()
     this.state = {
-      clicked: false
+      clicked: false,
+      array: []
 
     }
   }
 
 createCards(){
-  console.log(this.props.keys)
+  console.log("!!!!!!!!!!!")
+
+    var val = this.props.index
+    var start = val===0? 0 :(val*23)+1
+    var arr = []
+    for(let i=0;i<=23;i++){
+
+      console.log(start+i)
+      arr.push(this.props.info.god[start+i])
+    }
+
+
+  console.log(arr)
+  console.log(this.state.array)
+  this.setState({array:arr})
 }
 
-
   test() {
+    this.createCards()
     let change = !this.state.clicked
     this.setState({clicked: change})
-    this.createCards()
+
   }
 
   test2() {
     if(this.state.clicked) {
-      let dumb = [1,2,3,4,5,6,7,8,9,10]
+      let dumb = this.state.array
       return (
-        dumb.map(dum => {
+        dumb.map((val,index) => {
           return (
-            <article className="hourlyCards">
-              <h6>{this.props.info.FCTTIME.civil}</h6>
-              <img src={this.props.info.icon_url} />
-              <h6>{this.props.info.temp.english} degrees </h6>
+            <article className="card">
+              <h6>{val.FCTTIME.civil}</h6>
+              <img src={val.icon_url} />
+              <h6>{val.temp.english} degrees </h6>
             </article>
           )
         })
       )
     }
   }
+
+
 
   renderType(){
     if(this.props.type ==="hour"){

@@ -70,7 +70,8 @@ class App extends Component {
     input.forEach((value,index)=>{
 
         if(index%24===0){
-        input[index].god=input
+
+        input[index].hasOwnProperty("god")? null :input[index].god=input
         tempArr.push(input[index])
 
     }
