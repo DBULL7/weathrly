@@ -1,5 +1,11 @@
 {
   "name": "hello-world",
+  "jest":{
+        "moduleNameMapper": {
+        "\\.(css|less)$": "identity-obj-proxy",
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+      }
+    },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,7 +14,14 @@
     "react-dom": "^15.5.3"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "babel-core": "^6.24.1",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^19.0.2",
+    "locus": "^2.0.1",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^15.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
