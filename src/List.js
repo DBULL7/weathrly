@@ -25,6 +25,7 @@ class List extends Component {
         if(array.length===11){
              return (
              <Card
+             index={index}
               type ="daily"
               key={index}
               info={value}
@@ -32,6 +33,7 @@ class List extends Component {
         }
 
         return <Card
+          index={index}
           type="hour"
           key={index}
           info={value}

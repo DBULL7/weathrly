@@ -70,8 +70,6 @@ class App extends Component {
     input.forEach((value,index)=>{
 
         if(index%24===0){
-        console.log(input)
-        console.log(input[index])
         input[index].god=input
         tempArr.push(input[index])
 

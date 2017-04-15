@@ -6,12 +6,19 @@ class Card extends Component {
     super()
     this.state = {
       clicked: false
+
     }
   }
+
+createCards(){
+  console.log(this.props.keys)
+}
+
 
   test() {
     let change = !this.state.clicked
     this.setState({clicked: change})
+    this.createCards()
   }
 
   test2() {
