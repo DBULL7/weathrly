@@ -27,6 +27,7 @@ class List extends Component {
         }
 
         return <Card
+          
           index={index}
           type="hour"
           key={index}

@@ -61,7 +61,7 @@ createCards(){
     }else{
       return (
         <div>
-          <article className="card" onClick={() => {this.test()}}>
+          <article className="card  clickable-card" onClick={() => {this.test()}}>
 
             <h6>{this.props.info.FCTTIME.weekday_name}</h6>
             <img src={this.props.info.icon_url} />
