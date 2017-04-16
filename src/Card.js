@@ -11,13 +11,14 @@ class Card extends Component {
     }
   }
 
-createCards(){
-    var val = this.props.index
-    var start = val===0? 0 :(val*23)+1
-    var arr = []
-    for(let i=0;i<=23;i++){
-      arr.push(this.props.info.god[start+i])
-    }
+createCards() {
+  var start = this.props.index * 24;
+  var end = start + 23;
+  var arr = []
+
+  for (let i = start; i <= end; i++) {
+    arr.push(this.props.info.god[i])
+  }
 
   this.setState({array:arr})
 }

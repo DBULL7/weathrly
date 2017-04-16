@@ -1,14 +1,15 @@
 {
   "name": "hello-world",
-  "jest":{
-        "moduleNameMapper": {
-        "\\.(css|less)$": "identity-obj-proxy",
-        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
-      }
-    },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    }
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chai": "^3.5.0",
     "jquery": "^3.2.1",
     "react": "^15.5.3",
     "react-dom": "^15.5.3"

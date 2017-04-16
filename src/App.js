@@ -65,19 +65,25 @@ class App extends Component {
     this.apiCall()
   }
 
-  dailyUpdate(input){
+  dailyUpdate(input) {
     let tempArr = []
-    input.forEach((value,index)=>{
 
-        if(index%24===0){
+    // grab daily info from each 24th value -- loop through and increment by 24
+    input.forEach((value, index) => {
 
-        input[index].hasOwnProperty("god")? null :input[index].god=input
-        tempArr.push(input[index])
+        if (index % 24 === 0) {
+          input[index].hasOwnProperty("god") ?
+            null :
+            input[index].god = input;
 
-    }
+          tempArr.push(input[index])
+        }
+
     })
-tempArr[10]="!"
-  this.setState({dailyList:tempArr})
+
+    tempArr[10] = "!";
+
+    this.setState({dailyList:tempArr})
   }
 
   hourlyUpdate(input){
@@ -156,7 +162,7 @@ tempArr[10]="!"
 
   render() {
     return (
-      <article>
+      <article className="forTest">
         <Header handleKeyPress={this.handleKeyPress.bind(this)} sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
         <Main hourly={this.state.hourlyList}
           daily={this.state.dailyList}
