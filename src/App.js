@@ -149,7 +149,7 @@ tempArr[10]="!"
 
       $.get(
         // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
-        `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
+        `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${this.state.State}/${this.state.city}.json`
       ).then(weather => this.apiEdit(weather)).catch(() => {
         alert('Sorry Something Went Wrong ☹️, please enter a city, zipcode, or state')
       })
