@@ -11,8 +11,8 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      currentCity: 'Denver',
-      currentState: 'Colorado',
+      currentCity: '',
+      currentState: '',
       currentTemp: '',
       city: "",
       State:"",
@@ -20,7 +20,11 @@ class App extends Component {
       hourlyList:[],
       dailyList:[],
       icon: "",
-      feelslike: ''
+      feelslike: '',
+      condition: '',
+      high: '',
+      low: '',
+      summary: ''
     }
   }
 
@@ -28,12 +32,12 @@ class App extends Component {
     let city  = localStorage.getItem('city')
     let State = localStorage.getItem('State')
     this.setState({city: city ? city : '', State: State ? State : ''}, () => {
-      if( this.state.State == "") {
+      if(this.state.State == "") {
         console.log("!!")
         navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
       } else {
         $.getJSON(
-          `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
+          `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/q/${State}/${city}.json`
         ).then(weather => this.apiEdit(weather))
       }
     })
@@ -46,11 +50,12 @@ class App extends Component {
     console.log(longitude)
     $.getJSON(
       `http://api.wunderground.com/api/3d896652346518f2/geolookup/q/${latitude},${longitude}.json`
+      // make api call to different service to save on weather underground api calls
 
     ).then(weather => {
       let zip = weather.location.zip
       $.getJSON(
-        `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${zip}.json`
+        `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${zip}.json`
       ).then(locationWeather => {
         console.log(locationWeather);
         this.setState({city: 'Your Location'})
@@ -84,7 +89,7 @@ tempArr[10]="!"
     let tempArr = []
 
     input.forEach((value,index)=>{
-      if(index<10){
+      if(index<7){
         tempArr.push(input[index])
     }
     })
@@ -106,6 +111,15 @@ tempArr[10]="!"
       this.setState({icon: icon})
       let feelslike = this.state.currentWeather.hourly_forecast[0].feelslike.english
       this.setState({feelslike: feelslike})
+      let condition = this.state.currentWeather.hourly_forecast[0].condition
+      this.setState({condition: condition})
+      let high = this.state.currentWeather.forecast.simpleforecast.forecastday[0].high.fahrenheit
+      this.setState({high: high})
+      let low = this.state.currentWeather.forecast.simpleforecast.forecastday[0].low.fahrenheit
+      this.setState({low: low})
+      let summary = this.state.currentWeather.forecast.txt_forecast.forecastday[0].fcttext
+      console.log(summary)
+      this.setState({summary: summary})
   }
 
 
@@ -117,10 +131,14 @@ tempArr[10]="!"
       ).then(autocomplete => {
         let probableLocation = autocomplete.RESULTS[0].name.split(',')
         console.log(probableLocation);
-        console.log(probableLocation[0]);
+        console.log(probableLocation[0])
+        localStorage.setItem('city', probableLocation[0])
+        localStorage.setItem('State', probableLocation[1])
         $.get(
-          `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${probableLocation[1]}/${probableLocation[0]}.json`
+          `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${probableLocation[1]}/${probableLocation[0]}.json`
+          // `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${probableLocation[1]}/${probableLocation[0]}.json`
         ).then(weather => {
+          console.log(weather)
           this.apiEdit(weather)
           this.setState({currentState: probableLocation[1]})
         })
@@ -155,14 +173,18 @@ tempArr[10]="!"
   }
 
   findLocationKeyPress() {
-    console.log('yay')
     navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
   }
 
   render() {
     return (
       <article>
-        <Header findLocation={this.findLocationKeyPress.bind(this)} handleKeyPress={this.handleKeyPress.bind(this)} sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
+        <Header
+          findLocation={this.findLocationKeyPress.bind(this)}
+          handleKeyPress={this.handleKeyPress.bind(this)}
+          sendLocation={this.sendLocation.bind(this)}
+          updateLocation={this.updateLocation.bind(this)}
+        />
         <Main hourly={this.state.hourlyList}
           daily={this.state.dailyList}
           temp={this.state.currentTemp}
@@ -171,6 +193,10 @@ tempArr[10]="!"
           weather={this.state.currentWeather}
           icon={this.state.icon}
           feelslike={this.state.feelslike}
+          condition={this.state.condition}
+          high={this.state.high}
+          low={this.state.low}
+          summary={this.state.summary}
         />
       </article>
     )
