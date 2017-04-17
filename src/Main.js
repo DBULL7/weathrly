@@ -18,12 +18,9 @@ class Main extends Component {
             <h2>Hi: {this.props.high} Low: {this.props.low}</h2>
             <h2>Forecast: {this.props.summary}</h2>
           </div>
-
-          <main className="list-container">
-            <List listItems= {this.props.hourly} type = "hour" title="Hourly"/>
-            <List weather= {this.props.weather} listItems= {this.props.daily}  type  = "day" title="10 Day Forecast"/>
-          </main>
+          <List listItems= {this.props.hourly} type = "hour" title="Hourly"/>
         </div>
+          <List id="ten-day-forecast" weather= {this.props.weather} listItems= {this.props.daily}  type  = "day" title="10 Day Forecast"/>
       </div>
     )
   }
