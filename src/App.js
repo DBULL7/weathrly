@@ -154,10 +154,15 @@ tempArr[10]="!"
     }
   }
 
+  findLocationKeyPress() {
+    console.log('yay')
+    navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
+  }
+
   render() {
     return (
       <article>
-        <Header handleKeyPress={this.handleKeyPress.bind(this)} sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
+        <Header findLocation={this.findLocationKeyPress.bind(this)} handleKeyPress={this.handleKeyPress.bind(this)} sendLocation={this.sendLocation.bind(this)} updateLocation={this.updateLocation.bind(this)}/>
         <Main hourly={this.state.hourlyList}
           daily={this.state.dailyList}
           temp={this.state.currentTemp}
