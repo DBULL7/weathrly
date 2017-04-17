@@ -14,8 +14,8 @@ class Main extends Component {
       <h2>Today</h2>
       <img src={this.props.icon}/>
       <h2>Current: {this.props.temp}&#8457;</h2>
-      <h2>Feels Like: {this.props.feelslike}</h2>
-      <h2>Hi:  Low: </h2>
+      <h2>{this.props.condition}, feels like {this.props.feelslike}</h2>
+      <h2>Hi: {this.props.high} Low: {this.props.low}</h2>
       </div>
 
       <main className="list-container">
