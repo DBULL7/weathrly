@@ -37,7 +37,7 @@ class App extends Component {
         navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
       } else {
         $.getJSON(
-          `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${this.state.State}/${this.state.city}.json`
+          `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/q/${State}/${city}.json`
         ).then(weather => this.apiEdit(weather))
       }
     })
@@ -50,6 +50,7 @@ class App extends Component {
     console.log(longitude)
     $.getJSON(
       `http://api.wunderground.com/api/3d896652346518f2/geolookup/q/${latitude},${longitude}.json`
+      // make api call to different service to save on weather underground api calls
 
     ).then(weather => {
       let zip = weather.location.zip
