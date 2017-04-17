@@ -14,7 +14,7 @@ class Card extends Component {
   }
 
 
-sortHighLow(array) {
+displayHighLow() {
   var start = this.props.index * 24;
   var end = start + 23;
   var arr = []
@@ -22,12 +22,16 @@ sortHighLow(array) {
   for (let i = start; i <= end; i++) {
     arr.push(this.props.info.god[i])
   }
-  let sorted = array.sort((a, b) => {
+
+  let sorted = arr.sort((a, b) => {
     return a.temp.english - b.temp.english
   })
-  this.setState({sortedArray: sorted})
-  this.setState({high: sorted[23].temp.english})
-  this.setState({low: sorted[0].temp.english})
+
+  let high = sorted[23].temp.english
+  let low = sorted[0].temp.english
+    return (
+      <h6>{high}/{low}</h6>
+    )
 }
 
 createCards(){
@@ -81,13 +85,11 @@ createCards(){
     }else{
       return (
         <div>
-          {this.createCards()}
-          {this.sortHighLow(this.state.array)}
           <article className="card  clickable-card" onClick={() => {this.test()}}>
 
             <h6>{this.props.info.FCTTIME.weekday_name}</h6>
             <img src={this.props.info.icon_url} />
-            <h6>{this.state.high}/{this.state.low}</h6>
+            {this.displayHighLow()}
           </article>
           {this.test2()}
         </div>
@@ -95,7 +97,6 @@ createCards(){
       )
     }
   }
-
 
   render() {
     return (
