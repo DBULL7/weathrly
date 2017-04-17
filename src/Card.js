@@ -6,10 +6,33 @@ class Card extends Component {
     super()
     this.state = {
       clicked: false,
-      array: []
-
+      array: [],
+      sortedArray: [],
+      high: '',
+      low: ''
     }
   }
+
+
+displayHighLow() {
+  var start = this.props.index * 24;
+  var end = start + 23;
+  var arr = []
+
+  for (let i = start; i <= end; i++) {
+    arr.push(this.props.info.god[i])
+  }
+
+  let sorted = arr.sort((a, b) => {
+    return a.temp.english - b.temp.english
+  })
+
+  let high = sorted[23].temp.english
+  let low = sorted[0].temp.english
+    return (
+      <h6>{high}/{low}</h6>
+    )
+}
 
 createCards(){
   var start = this.props.index * 24;
@@ -19,8 +42,8 @@ createCards(){
   for (let i = start; i <= end; i++) {
     arr.push(this.props.info.god[i])
   }
-
   this.setState({array:arr})
+
 }
 
   test() {
@@ -66,7 +89,7 @@ createCards(){
 
             <h6>{this.props.info.FCTTIME.weekday_name}</h6>
             <img src={this.props.info.icon_url} />
-            <h6>{this.props.info.temp.english} degrees </h6>
+            {this.displayHighLow()}
           </article>
           {this.test2()}
         </div>
@@ -74,7 +97,6 @@ createCards(){
       )
     }
   }
-
 
   render() {
     return (
