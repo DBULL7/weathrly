@@ -6,10 +6,29 @@ class Card extends Component {
     super()
     this.state = {
       clicked: false,
-      array: []
-
+      array: [],
+      sortedArray: [],
+      high: '',
+      low: ''
     }
   }
+
+
+sortHighLow(array) {
+  var start = this.props.index * 24;
+  var end = start + 23;
+  var arr = []
+
+  for (let i = start; i <= end; i++) {
+    arr.push(this.props.info.god[i])
+  }
+  let sorted = array.sort((a, b) => {
+    return a.temp.english - b.temp.english
+  })
+  this.setState({sortedArray: sorted})
+  this.setState({high: sorted[23].temp.english})
+  this.setState({low: sorted[0].temp.english})
+}
 
 createCards(){
   var start = this.props.index * 24;
@@ -19,8 +38,8 @@ createCards(){
   for (let i = start; i <= end; i++) {
     arr.push(this.props.info.god[i])
   }
-
   this.setState({array:arr})
+
 }
 
   test() {
@@ -62,11 +81,13 @@ createCards(){
     }else{
       return (
         <div>
+          {this.createCards()}
+          {this.sortHighLow(this.state.array)}
           <article className="card  clickable-card" onClick={() => {this.test()}}>
 
             <h6>{this.props.info.FCTTIME.weekday_name}</h6>
             <img src={this.props.info.icon_url} />
-            <h6>{this.props.info.temp.english} degrees </h6>
+            <h6>{this.state.high}/{this.state.low}</h6>
           </article>
           {this.test2()}
         </div>
