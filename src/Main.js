@@ -12,10 +12,11 @@ class Main extends Component {
 <div className= "main-container">
       <div className="current-temp-content">
       <h2>Today</h2>
-      <img src={this.props.icon}/>
-      <h2>Current: {this.props.temp}&#8457;</h2>
-      <h2>{this.props.condition}, feels like {this.props.feelslike}</h2>
-      <h2>Hi: {this.props.high} Low: {this.props.low}</h2>
+        <img src={this.props.icon}/>
+        <h2>Current: {this.props.temp}&#8457;</h2>
+        <h2>{this.props.condition}, feels like {this.props.feelslike}</h2>
+        <h2>Hi: {this.props.high} Low: {this.props.low}</h2>
+        <h2>Forecast: {this.props.summary}</h2>
       </div>
 
       <main className="list-container">

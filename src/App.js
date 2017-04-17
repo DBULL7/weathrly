@@ -23,7 +23,8 @@ class App extends Component {
       feelslike: '',
       condition: '',
       high: '',
-      low: ''
+      low: '',
+      summary: ''
     }
   }
 
@@ -115,6 +116,9 @@ tempArr[10]="!"
       this.setState({high: high})
       let low = this.state.currentWeather.forecast.simpleforecast.forecastday[0].low.fahrenheit
       this.setState({low: low})
+      let summary = this.state.currentWeather.forecast.txt_forecast.forecastday[0].fcttext
+      console.log(summary)
+      this.setState({summary: summary})
   }
 
 
@@ -126,7 +130,9 @@ tempArr[10]="!"
       ).then(autocomplete => {
         let probableLocation = autocomplete.RESULTS[0].name.split(',')
         console.log(probableLocation);
-        console.log(probableLocation[0]);
+        console.log(probableLocation[0])
+        localStorage.setItem('city', probableLocation[0])
+        localStorage.setItem('State', probableLocation[1])
         $.get(
           `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${probableLocation[1]}/${probableLocation[0]}.json`
           // `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${probableLocation[1]}/${probableLocation[0]}.json`
@@ -189,6 +195,7 @@ tempArr[10]="!"
           condition={this.state.condition}
           high={this.state.high}
           low={this.state.low}
+          summary={this.state.summary}
         />
       </article>
     )
