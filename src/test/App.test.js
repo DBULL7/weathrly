@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import locus from "locus"
-import App from './App';
-import Main from './Main'
-import Header from './Header'
-import List from "./List.js"
-import CurrentTemp from "./CurrentTemp.js"
-import Location from "./Location.js"
+import App from '../App';
+import Main from '../Main'
+import Header from '../Header'
+import List from "../List.js"
+import CurrentTemp from "../CurrentTemp.js"
 import {shallow,mount,render} from 'enzyme'
 // var expect = require("chai").expect
 
@@ -168,24 +167,24 @@ describe("Input test", () => {
 
 })
 
-describe("Location Test", () => {
-
-  it("should have a length of one",() => {
-    const wrapper = shallow(<Location/>)
-    expect(wrapper.node.length,1)
-  })
-
-  it("should render a div",() => {
-    const wrapper = shallow(<Location/>)
-    expect(wrapper.node.type, "div")
-  })
-
-  it("should have props passed into it", () =>{
-    const wrapper = shallow(<Location/>)
-    expect(wrapper.node.props.className,'current-location-container')
-  })
-
-})
+// describe("Location Test", () => {
+//
+//   it("should have a length of one",() => {
+//     const wrapper = shallow(<Location/>)
+//     expect(wrapper.node.length,1)
+//   })
+//
+//   it("should render a div",() => {
+//     const wrapper = shallow(<Location/>)
+//     expect(wrapper.node.type, "div")
+//   })
+//
+//   it("should have props passed into it", () =>{
+//     const wrapper = shallow(<Location/>)
+//     expect(wrapper.node.props.className,'current-location-container')
+//   })
+//
+// })
 
 
 describe("Main Test", () => {

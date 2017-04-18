@@ -28,20 +28,18 @@ render(){
     <div className="header-container">
       <img className="header-logo" src={Icon} alt="logo of a weather "/>
       <div className="header-input-button-container">
-        <button
-            className="header-button locationBtn"
-            onClick={
-              () => {
-                this.props.findLocation();
-                this.clearInput()
-              }
-            } >
-
+      <button
+        className="header-button locationBtn"
+          onClick={ () => {
+              this.props.findLocation();
+              this.clearInput()
+            }
+          } >
           Find Location
-        </button>
+      </button>
 
-        <input onKeyPress={(event)=>{this.props.handleKeyPress(event)}}
-            onChange={(event)=>{
+        <input onKeyPress={(event) => {this.props.handleKeyPress(event)}}
+            onChange = {(event) => {
              this.props.updateLocation(event.target.value); this.localState(event.target.value);
             }}
             className="header-input"
@@ -54,13 +52,11 @@ render(){
               this.clearInput()
             }}
             className="header-button enterBtn">
-
           Enter
         </button>
       </div>
     </div>
-  )
-  }
+  )}
 }
 
 export default Header
