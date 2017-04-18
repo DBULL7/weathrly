@@ -15,7 +15,7 @@ class Main extends Component {
             <img src={this.props.icon} alt="current weather icon"/>
             <h2>Current: {this.props.temp}&#8457;</h2>
             <h2>{this.props.condition}, feels like {this.props.feelslike}</h2>
-            <h2>Hi: {this.props.high} Low: {this.props.low}</h2>
+            <h2>High: {this.props.high} Low: {this.props.low}</h2>
             <h2>Forecast: {this.props.summary}</h2>
           </div>
           <List id="daily-forecast" listItems={this.props.hourly} type="hour" title="Hourly"/>

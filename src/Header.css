@@ -48,10 +48,15 @@
   color:magenta;
 }
 
-@media(max-width:360px){
+@media(max-width:560px){
 .header-logo{
-  width:30px;
-  height:30px;
+display: none;
 }
 
+}
+
+@media(max-width:360px) {
+  .current-location-container{
+
+  }
 }

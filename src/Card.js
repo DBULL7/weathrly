@@ -20,7 +20,7 @@ displayHighLow() {
   var arr = []
 
   for (let i = start; i <= end; i++) {
-    arr.push(this.props.info.god[i])
+    arr.push(this.props.info.weatherData[i])
   }
 
   let sorted = arr.sort((a, b) => {
@@ -40,7 +40,7 @@ createCards(){
   var arr = []
 
   for (let i = start; i <= end; i++) {
-    arr.push(this.props.info.god[i])
+    arr.push(this.props.info.weatherData[i])
   }
   this.setState({array:arr})
 

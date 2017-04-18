@@ -35,15 +35,12 @@ it('should have a length of 1', () => {
   expect(wrapper.length,1)
 })
 
-it('should render a main element', () => {
+it('should render a main element via a method', () => {
   const wrapper = shallow(<App/>)
+  console.log(wrapper)
   expect(wrapper.find(Main).node.type,"header")
 })
 
-it('should render a main element', () => {
-  const wrapper = shallow(<App/>)
-  expect(wrapper.find(Main).node.type,"header")
-})
 
 it('should render a header element', () => {
   const wrapper = shallow(<App/>)
@@ -58,32 +55,32 @@ it("should render a div element as a container" , () =>{
 
 })
 
-describe("Test App state",() =>{
-
-  it.only("should change state on enter",()=>{
-    var mockFn  = jest.fn()
-
-    const wrapper = mount(<App getCurrentPosition={mockFn}/>)
-    wrapper.state={
-          currentCity: 'Denver',
-          currentState: 'Colorado',
-          currentTemp: '23',
-          city: "Denver",
-          State:"Colorado",
-          currentWeather:{},
-          hourlyList:[],
-          dailyList:[],
-          icon: "",
-          feelslike: '',
-          condition: '',
-          high: '',
-          low: '',
-          summary: ''
-        }
-  })
-
-
-})
+// describe("Test App state",() =>{
+//
+//   it.only("should change state on enter",()=>{
+//     var mockFn  = jest.fn()
+//
+//     const wrapper = mount(<App getCurrentPosition={mockFn}/>)
+//     wrapper.state={
+//           currentCity: 'Denver',
+//           currentState: 'Colorado',
+//           currentTemp: '23',
+//           city: "Denver",
+//           State:"Colorado",
+//           currentWeather:{},
+//           hourlyList:[],
+//           dailyList:[],
+//           icon: "",
+//           feelslike: '',
+//           condition: '',
+//           high: '',
+//           low: '',
+//           summary: ''
+//         }
+//   })
+//
+//
+// })
 
 
 describe('Header test', () => {
