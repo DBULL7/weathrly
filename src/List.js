@@ -17,17 +17,17 @@ class List extends Component {
         }
 
         if(array.length===11){
-             return (
-             <Card
-             index={index}
-              type ="daily"
+          return (
+            <Card
+              index={index}
+              type="daily"
               key={index}
               info={value}
             />)
         }
 
         return <Card
-        
+
           index={index}
           type="hour"
           key={index}
