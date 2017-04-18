@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './main-css/App.css'
 import Header from './Header'
 import Main from './Main'
 import $ from 'jquery'
@@ -150,14 +150,12 @@ class App extends Component {
 
   }
 
-
   updateLocation(input){
     var location = input.split(',')
     var  city = location[0]
     var  state = location[1] ? location[1] :""
     this.setState({city:city, State:state})
   }
-
 
   handleKeyPress(event) {
     if(event.key === 'Enter' && this.state.city !== '') {
@@ -172,25 +170,29 @@ class App extends Component {
   mainRender() {
     if(this.state.currentCity !== '') {
       return (
-        <Main hourly={this.state.hourlyList}
-        daily={this.state.dailyList}
-        temp={this.state.currentTemp}
-        city={this.state.currentCity}
-        state={this.state.currentState}
-        weather={this.state.currentWeather}
-        icon={this.state.icon}
-        feelslike={this.state.feelslike}
-        condition={this.state.condition}
-        high={this.state.high}
-        low={this.state.low}
-        summary={this.state.summary}
-        />
-      )
-    } else {
-      return (
-        <h2 className="welcome">Welcome. To get weather conditions please enter a City, zip code, or click Find Location</h2>
+        <Main
+            hourly={this.state.hourlyList}
+            daily={this.state.dailyList}
+            temp={this.state.currentTemp}
+            city={this.state.currentCity}
+            state={this.state.currentState}
+            weather={this.state.currentWeather}
+            icon={this.state.icon}
+            feelslike={this.state.feelslike}
+            condition={this.state.condition}
+            high={this.state.high}
+            low={this.state.low}
+            summary={this.state.summary}
+            />
       )
     }
+
+    return (
+      <h2 className="welcome">
+        Welcome. To get weather conditions please enter a City, zip code, or click Find Location
+      </h2>
+    )
+
   }
   render() {
     return (

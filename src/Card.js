@@ -76,7 +76,6 @@ createCards(){
     if(this.props.type ==="hour"){
       return (
         <article className="card hour-card">
-
           <h6>{this.props.info.FCTTIME.civil}</h6>
           <img src={this.props.info.icon_url} alt="weather icon" />
           <h6>{this.props.info.temp.english} degrees </h6>
@@ -86,11 +85,11 @@ createCards(){
       return (
         <div>
           <article className="card clickable-card" onClick={() => {this.cardClicked()}}>
-
             <h6>{this.props.info.FCTTIME.weekday_name}</h6>
             <img src={this.props.info.icon_url} alt="weather icon"/>
             {this.displayHighLow()}
           </article>
+
           {this.twentyFourHours()}
         </div>
 
