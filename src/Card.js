@@ -75,7 +75,7 @@ createCards(){
   renderType(){
     if(this.props.type ==="hour"){
       return (
-        <article className="card">
+        <article className="card hour-card">
 
           <h6>{this.props.info.FCTTIME.civil}</h6>
           <img src={this.props.info.icon_url} />
