@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Card from './Card.js'
-import "./List.css"
+import "./main-css/List.css"
 
 class List extends Component {
 
@@ -10,30 +10,28 @@ class List extends Component {
       <section className="list" id={this.props.id}>
 
         {
-        this.props.listItems.map(function(value,index,array){
-        if(index===10){
-          return
-        }
+          this.props.listItems.map(function(value,index,array){
+            if (index===10){
+            return
+          }
 
-        if(array.length===11){
+          if (array.length===11){
+            return (
+              <Card
+                index={index}
+                type="daily"
+                key={index}
+                info={value} />
+            )
+          }
           return (
             <Card
               index={index}
-              type="daily"
+              type="hour"
               key={index}
-              info={value}
-            />)
-        }
-
-        return <Card
-
-          index={index}
-          type="hour"
-          key={index}
-          info={value}
-         />
-      })
-
+              info={value} />
+          )
+        })
       }
       </section>
     )

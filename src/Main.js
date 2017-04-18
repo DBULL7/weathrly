@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import CurrentTemp from './CurrentTemp'
 import List from './List'
-import "./Main.css"
+import "./main-css/Main.css"
 
 class Main extends Component {
   render() {
     return (
 
       <div className="main-content">
-        <CurrentTemp temp={this.props.temp} city={this.props.city}  state={this.props.state} icon={this.props.icon} feelslike={this.props.feelslike}/>
+      {CurrentTemp(this.props.city,this.props.state)}
         <div className="main-container">
           <div className="current-temp-content">
             <h2>Today</h2>
@@ -20,10 +20,16 @@ class Main extends Component {
           </div>
           <List id="daily-forecast" listItems={this.props.hourly} type="hour" title="Hourly"/>
         </div>
-          <List id="ten-day-forecast" weather={this.props.weather} listItems={this.props.daily}  type="day" title="10 Day Forecast"/>
-      </div>
-    )
-  }
+
+      <List
+        id="ten-day-forecast"
+        weather={this.props.weather}
+        listItems={this.props.daily}
+        type="day"
+        title="10 Day Forecast"/>
+    </div>
+  )
+ }
 }
 
 

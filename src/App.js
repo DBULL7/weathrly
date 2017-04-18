@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import './App.css'
+import './main-css/App.css'
 import Header from './Header'
 import Main from './Main'
 import $ from 'jquery'
-
+var key = require("./apiKey")
+var myKey = key.key
 
 
 class App extends Component {
@@ -24,7 +25,8 @@ class App extends Component {
       condition: '',
       high: '',
       low: '',
-      summary: ''
+      summary: '',
+      apiSource:"http://api.wunderground.com/api"
     }
   }
 
@@ -37,7 +39,7 @@ class App extends Component {
         navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
       } else {
         $.getJSON(
-          `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/q/${State}/${city}.json`
+          `${this.state.apiSource}/${myKey}/forecast/hourly/hourly10day/q/${State}/${city}.json`
         ).then(weather => this.apiEdit(weather))
       }
     })
@@ -47,12 +49,12 @@ class App extends Component {
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
     $.getJSON(
-      `http://api.wunderground.com/api/3d896652346518f2/geolookup/q/${latitude},${longitude}.json`
+      `${this.state.apiSource}/${myKey}/geolookup/q/${latitude},${longitude}.json`
 
     ).then(weather => {
       let zip = weather.location.zip
       $.getJSON(
-        `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${zip}.json`
+        `${this.state.apiSource}/${myKey}/forecast/hourly/hourly10day/conditions/q/${zip}.json`
       ).then(locationWeather => {
         this.setState({city: locationWeather.current_observation.display_location.city, State: locationWeather.current_observation.display_location.state_name})
         localStorage.setItem('city', locationWeather.current_observation.display_location.city)
@@ -130,7 +132,7 @@ class App extends Component {
           localStorage.setItem('city', probableLocation[0])
           localStorage.setItem('State', probableLocation[1])
           $.get(
-            `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${probableLocation[1]}/${probableLocation[0]}.json`
+            `${this.state.apiSource}/${myKey}/forecast/hourly/hourly10day/conditions/q/${probableLocation[1]}/${probableLocation[0]}.json`
           ).then(weather => {
             this.apiEdit(weather)
             this.setState({currentState: probableLocation[1]})
@@ -142,7 +144,7 @@ class App extends Component {
       localStorage.setItem('State', this.state.State)
 
       $.get(
-        `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${this.state.State}/${this.state.city}.json`
+        `${this.state.apiSource}/${myKey}/forecast/hourly/hourly10day/conditions/q/${this.state.State}/${this.state.city}.json`
       ).then(weather => this.apiEdit(weather)).catch(() => {
         alert('Sorry Something Went Wrong ☹️, please enter a city, zipcode, or state')
       })
@@ -150,14 +152,12 @@ class App extends Component {
 
   }
 
-
   updateLocation(input){
     var location = input.split(',')
     var  city = location[0]
     var  state = location[1] ? location[1] :""
     this.setState({city:city, State:state})
   }
-
 
   handleKeyPress(event) {
     if(event.key === 'Enter' && this.state.city !== '') {
@@ -172,25 +172,29 @@ class App extends Component {
   mainRender() {
     if(this.state.currentCity !== '') {
       return (
-        <Main hourly={this.state.hourlyList}
-        daily={this.state.dailyList}
-        temp={this.state.currentTemp}
-        city={this.state.currentCity}
-        state={this.state.currentState}
-        weather={this.state.currentWeather}
-        icon={this.state.icon}
-        feelslike={this.state.feelslike}
-        condition={this.state.condition}
-        high={this.state.high}
-        low={this.state.low}
-        summary={this.state.summary}
-        />
-      )
-    } else {
-      return (
-        <h2 className="welcome">Welcome. To get weather conditions please enter a City, zip code, or click Find Location</h2>
+        <Main
+            hourly={this.state.hourlyList}
+            daily={this.state.dailyList}
+            temp={this.state.currentTemp}
+            city={this.state.currentCity}
+            state={this.state.currentState}
+            weather={this.state.currentWeather}
+            icon={this.state.icon}
+            feelslike={this.state.feelslike}
+            condition={this.state.condition}
+            high={this.state.high}
+            low={this.state.low}
+            summary={this.state.summary}
+            />
       )
     }
+
+    return (
+      <h2 className="welcome">
+        Welcome. To get weather conditions please enter a City, zip code, or click Find Location
+      </h2>
+    )
+
   }
   render() {
     return (
