@@ -58,7 +58,9 @@ class App extends Component {
         `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${zip}.json`
       ).then(locationWeather => {
         console.log(locationWeather);
-        this.setState({city: 'Your Location'})
+        this.setState({city: locationWeather.current_observation.display_location.city, State: locationWeather.current_observation.display_location.state_name})
+        localStorage.setItem('city', locationWeather.current_observation.display_location.city)
+        localStorage.setItem('State', locationWeather.current_observation.display_location.state_name)
         this.apiEdit(locationWeather)
       }).catch(() => {
         alert(`We can't find your location`)
