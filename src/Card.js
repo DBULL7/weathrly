@@ -46,23 +46,23 @@ createCards(){
 
 }
 
-  test() {
+  cardClicked() {
     this.createCards()
     let change = !this.state.clicked
     this.setState({clicked: change})
-
   }
 
-  test2() {
+
+  twentyFourHours() {
     if(this.state.clicked) {
-      let dumb = this.state.array
+      let generate = this.state.array
       return (
-        dumb.map((val,index) => {
+        generate.map((val,index) => {
           return (
-            <article className="cardDrop">
+            <article className="cardDrop" key={index}>
               <h6>{val.FCTTIME.civil}</h6>
-              <img src={val.icon_url} />
-              <h6>{val.temp.english} degrees </h6>
+              <img src={val.icon_url} alt="weather icon" />
+              <h6>{val.temp.english} degrees</h6>
             </article>
           )
         })
@@ -78,20 +78,20 @@ createCards(){
         <article className="card hour-card">
 
           <h6>{this.props.info.FCTTIME.civil}</h6>
-          <img src={this.props.info.icon_url} />
+          <img src={this.props.info.icon_url} alt="weather icon" />
           <h6>{this.props.info.temp.english} degrees </h6>
         </article>
       )
     }else{
       return (
         <div>
-          <article className="card  clickable-card" onClick={() => {this.test()}}>
+          <article className="card clickable-card" onClick={() => {this.cardClicked()}}>
 
             <h6>{this.props.info.FCTTIME.weekday_name}</h6>
-            <img src={this.props.info.icon_url} />
+            <img src={this.props.info.icon_url} alt="weather icon"/>
             {this.displayHighLow()}
           </article>
-          {this.test2()}
+          {this.twentyFourHours()}
         </div>
 
       )

@@ -12,11 +12,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 10px;
+  padding-top: 15px;
+  padding-right: 40px;
 }
 
 .header-container img{
-
+  padding-left: 40px;
 }
 
 .header-input-button-container{
@@ -25,20 +26,23 @@
 
 .header-input{
   border: none;
-  width:175px;
-  height: 30px;
+  width:250px;
+  height: 45px;
   padding-left: 10px;
+  font-size: 18px;
   background-color: rgba(0,0,0,.5);
   color: white;
 }
 
 .header-button{
-  height: 30px;
-  width: 60px;
+  height: 45px;
+  width: 90px;
   background-color: cornflowerblue;
   border: none;
+  color: #FFF;
   font-weight: 100;
-  font-size: 12px;
+  font-size: 16px;
+  border-radius: 3px;
 }
 .header-button:placeholder-shown {
   color:magenta;

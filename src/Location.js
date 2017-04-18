@@ -5,8 +5,8 @@ class Location extends Component{
     return(
       <div className="current-location-container">
 
-      <div className ="city">{this.props.city},</div>
-      <div className ="State">{this.props.state}</div>
+      <div className="city">{this.props.city},</div>
+      <div className="State">{this.props.state}</div>
       </div>
     )
   }
