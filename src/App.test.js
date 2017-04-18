@@ -10,13 +10,29 @@ import Location from "./Location.js"
 import {shallow,mount,render} from 'enzyme'
 // var expect = require("chai").expect
 
+var jsdom = require('jsdom').jsdom;
+
+global.document = jsdom('');
+global.window = document.defaultView;
+Object.keys(document.defaultView).forEach((property) => {
+  if (typeof global[property] === 'undefined') {
+    global[property] = document.defaultView[property];
+  }
+});
+
+global.navigator = {
+  userAgent: 'node.js'
+};
+
+
+
 
 describe("App test",() => {
 
 
 it('should have a length of 1', () => {
   const wrapper = shallow(<App/>)
-expect(wrapper.length,1)
+  expect(wrapper.length,1)
 })
 
 it('should render a main element', () => {
@@ -44,10 +60,26 @@ it("should render a div element as a container" , () =>{
 
 describe("Test App state",() =>{
 
-  it("should change state on enter",()=>{
+  it.only("should change state on enter",()=>{
+    var mockFn  = jest.fn()
 
-    const wrapper = mount(<App/>)
-
+    const wrapper = mount(<App getCurrentPosition={mockFn}/>)
+    wrapper.state={
+          currentCity: 'Denver',
+          currentState: 'Colorado',
+          currentTemp: '23',
+          city: "Denver",
+          State:"Colorado",
+          currentWeather:{},
+          hourlyList:[],
+          dailyList:[],
+          icon: "",
+          feelslike: '',
+          condition: '',
+          high: '',
+          low: '',
+          summary: ''
+        }
   })
 
 
