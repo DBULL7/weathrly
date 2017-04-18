@@ -16,28 +16,33 @@
 .current-temp-content{
   border-radius: 10px;
   padding-left: 15px;
-  background-color: aliceblue;
   background-color: white;
   opacity: 0.8;
   padding:0px 3px;
   display: flex;
-    flex-direction: column;
-    height: 400px;
-    justify-content: space-around;
-    align-items: center;
-    width: 85%;
-margin-bottom: 10px;
+  flex-direction: column;
+  height: 450px;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.current-temp-content img {
+  height: 108px;
 }
 
 
 
 .current-location-container{
-   border-radius: 10px;
-   background-color: rgba(100,100,100,0.5);
+  display: flex;
+  border-radius: 10px;
   color: white;
   text-shadow: 1px 1px 2px black;
-  font-size: 30px;
+  font-size: 45px;
   padding:0px 3px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -56,24 +61,28 @@ h2,h3 {
 
 
 .card , .cardDrop{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 60px;
-    width: 85vw;
-    height: 100px;
-    color: gold;
-    border-color:1px #fff solid;
-    text-shadow: black 0px 3px 3px;
-    border-radius: 40px;
-    margin-bottom: 15px;
-    font-family:monospace;
-    font-size:23px;
-    padding: 0px 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 60px;
+  width: 85vw;
+  height: 100px;
+  color: gold;
+  border-color:1px #fff solid;
+  text-shadow: black 0px 3px 3px;
+  border-radius: 40px;
+  margin-bottom: 15px;
+  font-family:monospace;
+  font-size:28px;
+  padding: 0px 5px;
 }
 
-.card{
+.card {
 background-color: rgba(138,200,200,0.5);
+}
+
+.hour-card {
+  height: 51px;
 }
 
 .current-temp-content{
@@ -99,7 +108,14 @@ cursor: pointer;
 
 #ten-day-forecast {
   display: flex;
+  justify-content: space-around;
   overflow-x: auto;
+  padding-top: 25px;
+}
+
+#ten-day-forecast > div {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (min-width:655px){
@@ -111,11 +127,15 @@ cursor: pointer;
     width: 150px;
   }
   .main-container{
-    align-items: baseline
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    /*align-items: baseline*/
   }
 
 .current-temp-content{
   margin-right: 30px;
+  width: 60%;
 }
 
 }

@@ -20,7 +20,6 @@ constructor(){
   }
 
   clearInput() {
-    console.log('damnit')
     this.setState({currentInput: ''})
   }
 
@@ -29,7 +28,7 @@ render(){
     <div className="header-container">
       <img className="header-logo" src={Icon} alt="logo of a weather "/>
       <div className="header-input-button-container">
-        <button onClick={this.props.findLocation} className="header-button locationBtn">Find Location</button>
+        <button onClick={() => {this.props.findLocation(); this.clearInput()}} className="header-button locationBtn">Find Location</button>
         <input onKeyPress={(event)=>{this.props.handleKeyPress(event)}}
                onChange={(event)=>{this.props.updateLocation(event.target.value); this.localState(event.target.value);}}
                className="header-input"
