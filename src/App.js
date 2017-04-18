@@ -72,7 +72,7 @@ class App extends Component {
     let tempArr = []
     input.forEach((value,index)=>{
       if(index%24===0){
-      input[index].hasOwnProperty("god") ? null :input[index].god=input
+      input[index].hasOwnProperty("weatherData") ? null :input[index].weatherData=input
       tempArr.push(input[index])
       }
     })

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Card from './Card.js'
-// import ListTitle from './ListTitle'
 import "./List.css"
 
 class List extends Component {

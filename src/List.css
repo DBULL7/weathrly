@@ -91,13 +91,17 @@ background-color: rgba(138,200,200,0.5);
 
 .cardDrop{
   background-color: rgba(10,300,50,0.5);
-
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  margin-right:15px;
 }
 
 .clickable-card {
   display: flex;
   flex-direction: column;
   width: 150px;
+  margin-right: 15px
 }
 
 .clickable-card:hover{
@@ -108,7 +112,6 @@ cursor: pointer;
 
 #ten-day-forecast {
   display: flex;
-  justify-content: space-around;
   overflow-x: auto;
   padding-top: 25px;
 }
