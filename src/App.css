@@ -1,7 +1,7 @@
 body {
   height:100vh;
   width:100vw;
-  background-image:url("https://onehdwallpaper.com/wp-content/uploads/2015/06/Rainy-Day-Nature-Wallpapers-For-Desktop.jpg");
+  background:linear-gradient(135deg, red , blue);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;

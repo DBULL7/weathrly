@@ -132,13 +132,10 @@ tempArr[10]="!"
         `http://autocomplete.wunderground.com/aq?cb=?&query=${this.state.city}`
       ).then(autocomplete => {
         let probableLocation = autocomplete.RESULTS[0].name.split(',')
-        console.log(probableLocation);
-        console.log(probableLocation[0])
         localStorage.setItem('city', probableLocation[0])
         localStorage.setItem('State', probableLocation[1])
         $.get(
           `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${probableLocation[1]}/${probableLocation[0]}.json`
-          // `http://api.wunderground.com/api/3d896652346518f2/hourly10day/q/${probableLocation[1]}/${probableLocation[0]}.json`
         ).then(weather => {
           console.log(weather)
           this.apiEdit(weather)
@@ -150,7 +147,6 @@ tempArr[10]="!"
       localStorage.setItem('State', this.state.State)
 
       $.get(
-        // `http://api.wunderground.com/api/3d896652346518f2/forecast10day/q/${this.state.currentState}/${this.state.currentCity}.json`
         `http://api.wunderground.com/api/3d896652346518f2/forecast/hourly/hourly10day/conditions/q/${this.state.State}/${this.state.city}.json`
       ).then(weather => this.apiEdit(weather)).catch(() => {
         alert('Sorry Something Went Wrong ☹️, please enter a city, zipcode, or state')
