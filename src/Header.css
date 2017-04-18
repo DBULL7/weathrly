@@ -16,8 +16,11 @@
 }
 
 .header-container img{
-  padding-left: 10px;
 
+}
+
+.header-input-button-container{
+  display: flex;
 }
 
 .header-input{
@@ -30,7 +33,7 @@
 }
 
 .header-button{
-  height: 33px;
+  height: 30px;
   width: 60px;
   background-color: cornflowerblue;
   border: none;
@@ -39,4 +42,12 @@
 }
 .header-button:placeholder-shown {
   color:magenta;
+}
+
+@media(max-width:360px){
+.header-logo{
+  width:30px;
+  height:30px;
+}
+
 }

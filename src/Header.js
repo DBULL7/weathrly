@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import Input from "./Input"
+
 import Icon from  "../images/icon.png"
 import "./Header.css"
 
@@ -15,6 +15,14 @@ constructor(){
 
 }
 
+  localState(input) {
+    this.setState({currentInput: input})
+  }
+
+  clearInput() {
+    console.log('damnit')
+    this.setState({currentInput: ''})
+  }
 
 render(){
   return (
@@ -22,8 +30,12 @@ render(){
       <img className="header-logo" src={Icon} alt="logo of a weather "/>
       <div className="header-input-button-container">
         <button onClick={this.props.findLocation} className="header-button">Find Location</button>
-        <Input handleKeyPress={this.props.handleKeyPress} updateLocation={this.props.updateLocation}/>
-        <button onClick={()=>{this.props.sendLocation()}} className="header-button">Enter</button>
+        <input onKeyPress={(event)=>{this.props.handleKeyPress(event)}}
+               onChange={(event)=>{this.props.updateLocation(event.target.value); this.localState(event.target.value);}}
+               className="header-input"
+               placeholder="Enter City/State"
+                value={this.state.currentInput}/>
+        <button onClick={()=>{this.props.sendLocation(); this.clearInput()}} className="header-button">Enter</button>
       </div>
     </div>
   )
