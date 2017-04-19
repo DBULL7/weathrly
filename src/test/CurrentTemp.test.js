@@ -1,3 +1,10 @@
+import {shallow,mount,render} from 'enzyme'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import locus from "locus"
+import CurrentTemp from "../CurrentTemp"
+
+
 describe("currentTemp Test", () => {
 
   it("should have a length of one",() => {

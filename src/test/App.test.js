@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import locus from "locus"
 import App from '../App';
-import Main from '../Main'
-import Header from '../Header'
-import List from "../List.js"
-import CurrentTemp from "../CurrentTemp.js"
+import Main from "../Main"
+import Header from "../Header"
 import {shallow,mount,render} from 'enzyme'
-// var expect = require("chai").expect
 
 var jsdom = require('jsdom').jsdom;
 

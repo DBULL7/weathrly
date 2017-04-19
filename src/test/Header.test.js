@@ -1,3 +1,10 @@
+import {shallow,mount,render} from 'enzyme'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import locus from "locus"
+import Header from '../Header'
+
+
 describe('Header test', () => {
 
   it("should contain children elements", () => {
