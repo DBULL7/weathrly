@@ -26,7 +26,8 @@ class App extends Component {
       high: '',
       low: '',
       summary: '',
-      apiSource:"http://api.wunderground.com/api"
+      apiSource:"http://api.wunderground.com/api",
+      loading: false
     }
   }
 
@@ -116,6 +117,7 @@ class App extends Component {
       this.setState({low: low})
       let summary = this.state.currentWeather.forecast.txt_forecast.forecastday[0].fcttext
       this.setState({summary: summary})
+      this.setState({loading: false})
   }
 
 
@@ -166,6 +168,7 @@ class App extends Component {
   }
 
   findLocationKeyPress() {
+    this.setState({loading: true})
     navigator.geolocation.getCurrentPosition(this.findLocation.bind(this))
   }
 
@@ -204,6 +207,7 @@ class App extends Component {
           handleKeyPress={this.handleKeyPress.bind(this)}
           sendLocation={this.sendLocation.bind(this)}
           updateLocation={this.updateLocation.bind(this)}
+          loading={this.state.loading}
         />
         {this.mainRender()}
       </article>
