@@ -23,11 +23,23 @@ constructor(){
     this.setState({currentInput: ''})
   }
 
+  loadingAnimation(){
+    if (this.props.loading) {
+      return(
+        <img className="header-logo animated" src={Icon} alt="logo of a weather "/>
+      )
+    } else {
+      return (
+        <img className="header-logo" src={Icon} alt="logo of a weather "/>
+      )
+    }
+  }
+
 render(){
   return (
     <div className="header-container">
-      <img className="header-logo" src={Icon} alt="logo of a weather "/>
       <div className="header-input-button-container">
+      {this.loadingAnimation()}
       <button
         className="header-button locationBtn"
           onClick={ () => {
