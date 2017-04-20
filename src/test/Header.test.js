@@ -92,4 +92,26 @@ describe("Input test", () => {
     expect(wrapper.props.value,"CHEWIE")
   })
 
+  it.only("should be able to change state",()=>{
+    var mockFn = jest.fn()
+    const wrapper = shallow(<Header sendLocation={mockFn}/>)
+
+    wrapper.setState({currentInput:""})
+
+    expect(wrapper.state("currentInput"),"")
+
+    wrapper.setState({currentInput:"Denver"})
+
+    expect(wrapper.state("currentInput"),"Denver")
+
+    let clearButton = wrapper.find('button')
+    let enterButton = wrapper.find('.enterBtn')
+
+    enterButton.simulate('click')
+
+    expect(wrapper.state("currentInput"),"")
+
+
+  })
+
 })
