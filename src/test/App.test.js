@@ -28,9 +28,9 @@ describe("App test",() => {
   })
 
   it('should render a main element via a method', () => {
-    const wrapper = shallow(<App/>)
+    const wrapper = shallow(<App />)
     console.log(wrapper)
-    expect(wrapper.find(Main).node.type,"header")
+    expect(wrapper.find(Main).length,1)
   })
 
 
@@ -45,7 +45,127 @@ describe("App test",() => {
     expect(wrapper.node.type , "div")
   })
 
+
+  it("should have a default state when starting",()=>{
+
+    const wrapper = shallow(<App/>)
+    wrapper.setState({
+      currentCity: '',
+      currentState: '',
+      currentTemp: '',
+      city: "",
+      State:"",
+      currentWeather:{},
+      hourlyList:[],
+      dailyList:[],
+      icon: "",
+      feelslike: '',
+      condition: '',
+      high: '',
+      low: '',
+      summary: '',
+      apiSource:"http://api.wunderground.com/api",
+      loading: false
+    })
+    expect(wrapper.state,{
+      currentCity: '',
+      currentState: '',
+      currentTemp: '',
+      city: "",
+      State:"",
+      currentWeather:{},
+      hourlyList:[],
+      dailyList:[],
+      icon: "",
+      feelslike: '',
+      condition: '',
+      high: '',
+      low: '',
+      summary: '',
+      apiSource:"http://api.wunderground.com/api",
+      loading: false
+    })
+  })
+
+it("should change state",()=>{
+  const wrapper = shallow(<App/>)
+  wrapper.setState({
+    currentCity: '',
+    currentState: '',
+    currentTemp: '',
+    city: "",
+    State:"",
+    currentWeather:{},
+    hourlyList:[],
+    dailyList:[],
+    icon: "",
+    feelslike: '',
+    condition: '',
+    high: '',
+    low: '',
+    summary: '',
+    apiSource:"http://api.wunderground.com/api",
+    loading: false
+  })
+  expect(wrapper.state,{
+    currentCity: '',
+    currentState: '',
+    currentTemp: '',
+    city: "",
+    State:"",
+    currentWeather:{},
+    hourlyList:[],
+    dailyList:[],
+    icon: "",
+    feelslike: '',
+    condition: '',
+    high: '',
+    low: '',
+    summary: '',
+    apiSource:"http://api.wunderground.com/api",
+    loading: false
+  })
+  wrapper.setState({
+    currentCity: 'Denver',
+    currentState: 'Colorado',
+    currentTemp: '69',
+    city: "Denver",
+    State:"Colorado",
+    currentWeather:{},
+    hourlyList:[],
+    dailyList:[],
+    icon: "",
+    feelslike: '',
+    condition: '',
+    high: '',
+    low: '',
+    summary: '',
+    apiSource:"http://api.wunderground.com/api",
+    loading: false
+  })
+  expect(wrapper.state,{
+    currentCity: 'Denver',
+    currentState: 'Colorado',
+    currentTemp: '69',
+    city: "Denver",
+    State:"Colorado",
+    currentWeather:{},
+    hourlyList:[],
+    dailyList:[],
+    icon: "",
+    feelslike: '',
+    condition: '',
+    high: '',
+    low: '',
+    summary: '',
+    apiSource:"http://api.wunderground.com/api",
+    loading: false
+  })
 })
+
+})
+
+
 
 // describe("Test App state",() =>{
 //

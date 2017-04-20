@@ -10,7 +10,6 @@ constructor(){
 
   this.state ={
     currentInput:"",
-    sentInput:""
   }
 
 }
