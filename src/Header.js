@@ -36,12 +36,14 @@ constructor(){
 
 render(){
   return (
-    <div className="header-container">
-      <div className="header-input-button-container">
+    <div className = "nav-container">
       {this.loadingAnimation()}
+    <div className = "header-container">
+      <div className="header-input-button-container">
+
       <button
-        className="header-button locationBtn"
-          onClick={ () => {
+        className = "header-button locationBtn"
+          onClick = { () => {
               this.props.findLocation();
               this.clearInput()
             }
@@ -66,6 +68,7 @@ render(){
           Enter
         </button>
       </div>
+    </div>
     </div>
   )}
 }
