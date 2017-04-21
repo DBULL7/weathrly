@@ -39,7 +39,7 @@ describe("Main Test", () => {
   })
 
 
-  it.only("should have props passed into it", () =>{
+  it("should have props passed into it", () =>{
     const wrapper = shallow(
           <Main
             hourly={hourly}
@@ -56,7 +56,7 @@ describe("Main Test", () => {
             summary={'All tests and no play makes Dev an angry boy'}
           />)
 
-        expect(wrapper.find('.city').node.props.children[0]).to.equal('Dallas')
+        expect(wrapper.find('.city').node.props.children[0],'Denver')
 
   })
 
@@ -65,23 +65,23 @@ describe("Main Test", () => {
 describe("current-temp Test", () => {
 
   it("should have a length of one",() => {
-    const wrapper = Main(
-            hourly,
-            daily,
-            69,
-            'Denver',
-            'Colorado',
-            info,
-            icon,
-            50,
-            'bullshit',
-            70,
-            60,
-            'more bullshit'
-              )
-    // const currentTemp = wrapper.find(".current-temp");
-    console.log(wrapper)
-    // expect(currentTemp.node.length,1)
+    const wrapper = shallow(
+          <Main
+            hourly={hourly}
+            daily={daily}
+            temp={69}
+            city={'Denver'}
+            state={'Colorado'}
+            weather={info}
+            icon={icon}
+            feelslike={54}
+            condition={'Terrible'}
+            high={70}
+            low={60}
+            summary={'All tests and no play makes Dev an angry boy'}
+          />)
+
+        expect(wrapper.find('.State').node.props.children,'Colorado')
   })
 
 
@@ -103,8 +103,8 @@ describe("current-temp Test", () => {
     const city = wrapper.find(".city")
     const state = wrapper.find(".State");
 
-    expect(city.nodes[0].props.children[0],"Denver")
-    expect(state.nodes[0].props.children,"Colorado")
+    expect(city.nodes[0].props.children[0]).toEqual("Denver")
+    expect(state.nodes[0].props.children).toEqual("Colorado")
 
   })
 

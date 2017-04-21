@@ -52,3 +52,27 @@ describe("List-Test",()=>{
 
   })
 })
+
+describe("Card-test",()=>{
+
+  it("should have weather information on the rendered cards",()=>{
+    let wrapper = shallow(<List type={"day"}  listItems={
+    daily.map(function(value,index,array){
+
+    return (
+      <Card
+        index={index}
+        type="daily"
+        key={index}
+        info={info} />
+    )
+  })}/>)
+
+
+
+    expect(wrapper.find(".card").root.node.props.children[0].props.info.props.info.current_observation.weather).toEqual("Partly Cloudy")
+
+  })
+
+
+})
