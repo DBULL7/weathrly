@@ -16,7 +16,7 @@ let cardInfo = daily.map(val=>{
 
 describe("Card Test",()=>{
 
-it("it should render a card",()=>{
+it.skip("it should render a card",()=>{
   var mockFn  = jest.fn()
 console.log(cardInfo)
   const wrapper = shallow(<Card type={"daily"} info = {daily} onClick={() => {mockFn} }/>)

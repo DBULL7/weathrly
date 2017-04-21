@@ -29,7 +29,6 @@ describe("App test",() => {
 
   it('should render a main element via a method', () => {
     const wrapper = shallow(<App />)
-    console.log(wrapper)
     expect(wrapper.find(Main).length,1)
   })
 

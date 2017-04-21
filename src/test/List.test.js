@@ -29,12 +29,13 @@ describe("List-Test",()=>{
     )
   })}/>)
   expect(wrapper.node.props.children.length,7);
-expect(wrapper.node.props.children[0].props.type,"hourly")
+  expect(wrapper.find("Card").first().props().info.props.type,"hour")
+  expect(wrapper.find("Card").last().props().info.props.type,"hour")
   })
 
   it("should render daily cards",()=>{
 
-    let wrapper = shallow(<List   listItems={
+    let wrapper = shallow(<List type={"day"}  listItems={
     daily.map(function(value,index,array){
 
     return (
@@ -46,6 +47,8 @@ expect(wrapper.node.props.children[0].props.type,"hourly")
     )
   })}/>)
   expect(wrapper.node.props.children.length,10)
-  expect(wrapper.node.props.children[0].props.type,"daily")
+  expect(wrapper.find("Card").first().props().info.props.type,"daily")
+  expect(wrapper.find("Card").last().props().info.props.type,"daily")
+
   })
 })
