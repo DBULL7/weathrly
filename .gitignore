@@ -4,7 +4,6 @@
 /src/apiKey.js
 
 # dependencies
-/node_modules
 
 # testing
 /coverage

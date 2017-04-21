@@ -92,7 +92,7 @@ describe("Input test", () => {
     expect(wrapper.props.value,"CHEWIE")
   })
 
-  it.only("should be able to change state",()=>{
+  it("should be able to change state",()=>{
     var mockFn = jest.fn()
     const wrapper = shallow(<Header sendLocation={mockFn}/>)
 
