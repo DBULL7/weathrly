@@ -3,26 +3,61 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import locus from "locus"
 import Main from '../Main'
+let info    = require("./fakeApi.json")
+let weather = Object.keys(info.hourly_forecast)
+let hourly    = weather.filter((val,index)=>{
+  return index<7
+})
+let daily = weather.filter((val,index)=>{
+return index%24 ===0
+})
 
+let icon = 'none'
 
 
 
 describe("Main Test", () => {
 
   it("should have a length of one",() => {
-    const wrapper = shallow(<Main/>)
-    expect(wrapper.node.length,1)
+    const wrapper = Main(
+            hourly,
+            daily,
+            69,
+            'Denver',
+            'Colorado',
+            info,
+            icon,
+            50,
+            'bullshit',
+            70,
+            60,
+            'more bullshit'
+              )
+
+      expect(wrapper.props, '.main-content')
+
+
   })
 
 
-  it("should render a main",() => {
-    const wrapper = shallow(<Main/>)
-    expect(wrapper.node.type,"main")
-  })
+  it.only("should have props passed into it", () =>{
+    const wrapper = Main(
+            hourly,
+            daily,
+            69,
+            'Denver',
+            'Colorado',
+            info,
+            icon,
+            50,
+            'bullshit',
+            70,
+            60,
+            'more bullshit'
+          )
 
-  it("should have props passed into it", () =>{
-    const wrapper = shallow(<Main/>)
-    expect(wrapper.node.props.className,'current-location-container')
+    // console.log(wrapper.props.children[1].props.children[0].props.children[3]);
+    expect(wrapper.props.children[1].props.children[0].props.children[3].props.children[2], 100)
 
   })
 
@@ -31,9 +66,23 @@ describe("Main Test", () => {
 describe("current-temp Test", () => {
 
   it("should have a length of one",() => {
-    const wrapper = shallow(<Main/>)
-    const currentTemp = wrapper.find(".current-temp");
-    expect(currentTemp.node.length,1)
+    const wrapper = Main(
+            hourly,
+            daily,
+            69,
+            'Denver',
+            'Colorado',
+            info,
+            icon,
+            50,
+            'bullshit',
+            70,
+            60,
+            'more bullshit'
+              )
+    // const currentTemp = wrapper.find(".current-temp");
+    console.log(wrapper)
+    // expect(currentTemp.node.length,1)
   })
 
 
