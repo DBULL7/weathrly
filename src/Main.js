@@ -4,7 +4,7 @@ import List from './List'
 import "./main-css/Main.css"
 
 
-let Main = (hourly, daily, temp, city, state, weather, icon, feelslike, condition, high, low, summary) => {
+let Main = ({hourly, daily, temp, city, state, weather, icon, feelslike, condition, high, low, summary}) => {
   return (
     <div className="main-content">
       <div className="current-temp">
@@ -22,9 +22,17 @@ let Main = (hourly, daily, temp, city, state, weather, icon, feelslike, conditio
             <h2>High: {high} Low: {low}</h2>
             <h2>Forecast: {summary}</h2>
           </div>
-        {List("daily-forecast", weather, hourly, "hour", "Hourly")}
+        <List id="daily-forecast"
+              listItems={hourly}
+              type="hour"
+              title="Hourly"
+            />
       </div>
-    {List('ten-day-forecast', weather, daily, 'day', "10 Day Forecast")}
+    <List id="ten-day-forecast"
+        weather={weather}
+        listItems={daily}
+        type="day"
+        title="10 Day Forecast"/>
   </div>
   )
 }

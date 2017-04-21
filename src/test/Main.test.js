@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import locus from "locus"
 import Main from '../Main'
+import App from '../App'
 let info    = require("./fakeApi.json")
 let weather = Object.keys(info.hourly_forecast)
 let hourly    = weather.filter((val,index)=>{
@@ -18,12 +19,12 @@ let icon = 'none'
 
 describe("Main Test", () => {
 
-  it("should have a length of one",() => {
-    const wrapper = Main(
-            hourly,
-            daily,
-            69,
-            'Denver',
+  it.only("should have a length of one",() => {
+    const wrapper = <Main
+            hourly={this.props.hourly},
+            daily={this.props.daily},
+            temp={69},
+            city={'Denver'},
             'Colorado',
             info,
             icon,
@@ -32,16 +33,16 @@ describe("Main Test", () => {
             70,
             60,
             'more bullshit'
-              )
-
+          />
+          console.log(wrapper)
       expect(wrapper.props, '.main-content')
 
 
   })
 
 
-  it.only("should have props passed into it", () =>{
-    const wrapper = Main(
+  it("should have props passed into it", () =>{
+    const wrapper = App(
             hourly,
             daily,
             69,
@@ -56,7 +57,7 @@ describe("Main Test", () => {
             'more bullshit'
           )
 
-    // console.log(wrapper.props.children[1].props.children[0].props.children[3]);
+    console.log(wrapper.props.children[1].props.children[0].props.children[3]);
     expect(wrapper.props.children[1].props.children[0].props.children[3].props.children[2], 100)
 
   })

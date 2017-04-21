@@ -4,7 +4,7 @@ import "./main-css/List.css"
 
 
 
-let List = (id, weather, listItems, type, title) => {
+let List = ({id, weather, listItems, type, title}) => {
   return (
     <section className="list" id={id}>
 
