@@ -3,26 +3,60 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import locus from "locus"
 import Main from '../Main'
+import App from '../App'
+let info    = require("./fakeApi.json")
+let weather = Object.keys(info.hourly_forecast)
+let hourly    = weather.filter((val,index)=>{
+  return index<7
+})
+let daily = weather.filter((val,index)=>{
+return index%24 ===0
+})
 
+let icon = 'none'
 
 
 
 describe("Main Test", () => {
 
   it("should have a length of one",() => {
-    const wrapper = shallow(<Main/>)
-    expect(wrapper.node.length,1)
+    const wrapper = shallow(
+          <Main
+            hourly={hourly}
+            daily={daily}
+            temp={69}
+            city={'Denver'}
+            state={'Colorado'}
+            weather={info}
+            icon={icon}
+            feelslike={54}
+            condition={'Terrible'}
+            high={70}
+            low={60}
+            summary={'All tests and no play makes Dev an angry boy'}
+          />)
+      expect(wrapper.find('.main-content'), '.main-content')
   })
 
 
-  it("should render a main",() => {
-    const wrapper = shallow(<Main/>)
-    expect(wrapper.node.type,"main")
-  })
+  it.only("should have props passed into it", () =>{
+    const wrapper = shallow(
+          <Main
+            hourly={hourly}
+            daily={daily}
+            temp={69}
+            city={'Denver'}
+            state={'Colorado'}
+            weather={info}
+            icon={icon}
+            feelslike={54}
+            condition={'Terrible'}
+            high={70}
+            low={60}
+            summary={'All tests and no play makes Dev an angry boy'}
+          />)
 
-  it("should have props passed into it", () =>{
-    const wrapper = shallow(<Main/>)
-    expect(wrapper.node.props.className,'current-location-container')
+        expect(wrapper.find('.city').node.props.children[0]).to.equal('Dallas')
 
   })
 
@@ -31,9 +65,23 @@ describe("Main Test", () => {
 describe("current-temp Test", () => {
 
   it("should have a length of one",() => {
-    const wrapper = shallow(<Main/>)
-    const currentTemp = wrapper.find(".current-temp");
-    expect(currentTemp.node.length,1)
+    const wrapper = Main(
+            hourly,
+            daily,
+            69,
+            'Denver',
+            'Colorado',
+            info,
+            icon,
+            50,
+            'bullshit',
+            70,
+            60,
+            'more bullshit'
+              )
+    // const currentTemp = wrapper.find(".current-temp");
+    console.log(wrapper)
+    // expect(currentTemp.node.length,1)
   })
 
 
