@@ -175,20 +175,20 @@ class App extends Component {
   mainRender() {
     if(this.state.currentCity !== '') {
       return (
-        <Main
-            hourly={this.state.hourlyList}
-            daily={this.state.dailyList}
-            temp={this.state.currentTemp}
-            city={this.state.currentCity}
-            state={this.state.currentState}
-            weather={this.state.currentWeather}
-            icon={this.state.icon}
-            feelslike={this.state.feelslike}
-            condition={this.state.condition}
-            high={this.state.high}
-            low={this.state.low}
-            summary={this.state.summary}
-            />
+        Main(
+             this.state.hourlyList,
+             this.state.dailyList,
+             this.state.currentTemp,
+             this.state.currentCity,
+             this.state.currentState,
+             this.state.currentWeather,
+             this.state.icon,
+             this.state.feelslike,
+             this.state.condition,
+             this.state.high,
+             this.state.low,
+             this.state.summary
+           )
       )
     }
 

@@ -50,7 +50,7 @@ describe("current-temp Test", () => {
 
   })
 
-  it.only("should pass in props to location and make sure they render",()=>{
+  it("should pass in props to location and make sure they render",()=>{
     const wrapper = shallow(<Main  city={"Denver"} state={"Colorado"}/>)
     const city = wrapper.find(".city")
     const state = wrapper.find(".State");
